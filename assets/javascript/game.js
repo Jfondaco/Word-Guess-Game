@@ -7,7 +7,7 @@ var winsText = document.getElementById("wins");
 var guessesText= document.getElementById("guesses-left");
 var lettersText = document.getElementById("letters-guessed");
 //below line may be incorrect????
-var progress = document.getElementById("guess-bar")
+var progress = document.getElementById("guess-bar");
 
 //array for answers
 var possibleAnswers = ["hello", "goodbye", "world", "hard", "diffcult", "stuck", "confused"];
@@ -33,18 +33,16 @@ document.onkeyup = function(event) {
         if (answer[j] === userGuess) {
         answerArray[j] = userGuess;
         guessesLeft--;
-        
         }
 
-    }
+        //display results and progress
+        guessesText.textContent = "Guesses remaining " + guessesLeft; //error with this line "Uncaught TypeError: Cannot set property 'textContent' of null" assume it cant find the guesses-left id for some reason?
+        winsText.textContent = "Wins: " + score;
+        lettersText.textContent = "Letters Guessed" + userGuess;
+        progress.textContent = answerArray;
 
-    //display results and progress
-    guessesText.textContent = "Guesses remaining " + guessesLeft;
-    winsText.textContent = "Wins: " + score;
-    lettersText.textContent = "Letters Guessed" + userGuess;
-    progress.textContent = answerArray;
-
-    console.log(userGuess);
+        console.log(userGuess);
+    }    
 }
 
 
