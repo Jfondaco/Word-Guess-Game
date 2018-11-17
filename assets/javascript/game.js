@@ -2,10 +2,12 @@
 var score = 0;
 var guessesLeft = 11;
 
-//grab Ps
+//grab p ids
 var winsText = document.getElementById("wins");
 var guessesText= document.getElementById("guesses-left");
 var lettersText = document.getElementById("letters-guessed");
+//below line may be incorrect????
+var progress = document.getElementById("guess-bar")
 
 //array for answers
 var possibleAnswers = ["hello", "goodbye", "world", "hard", "diffcult", "stuck", "confused"];
@@ -27,7 +29,6 @@ document.onkeyup = function(event) {
 
    
     //while loop for no answer yet, need guessesLeft-- need to also push guessed letter to letters-guessed
-    // don't think this loop is correct?
     for (var j = 0; j < answer.length; j++) {
         if (answer[j] === userGuess) {
         answerArray[j] = userGuess;
@@ -37,10 +38,11 @@ document.onkeyup = function(event) {
 
     }
 
-    
+    //display results and progress
     guessesText.textContent = "Guesses remaining " + guessesLeft;
     winsText.textContent = "Wins: " + score;
     lettersText.textContent = "Letters Guessed" + userGuess;
+    progress.textContent = answerArray;
 
     console.log(userGuess);
 }
