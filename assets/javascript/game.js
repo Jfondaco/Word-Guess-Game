@@ -2,7 +2,6 @@
 // -Lets someone guess the same letter twice
 // -if answer has 2 of the same letter it adds 2 guesses remaining back (should be 1)
 // -if answer has 2 of the same letter remaining guesses only decreases by 1 (should be 2)
-// -guesses remaining will go to a negative (need a break function or some exit for loop)
 // -need to restart when word is finished or guesses remaining = 0 and increment wins
 
 
@@ -25,9 +24,6 @@ var guessesMade = [];
 
 //need to select a random answer
 var answer = possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)];
-
-//var for remaining letters
-// var remainingLetters = answer.length;
 
 // creates _ for the answer
 var answerArray = [];
