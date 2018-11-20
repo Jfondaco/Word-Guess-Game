@@ -1,12 +1,12 @@
 .col-md-4{
-    border: 3px dotted black;
+    border: 3px solid pink;
     background:black;
     color: white;
 
 }
 
 .col-md-4-offset-4{
-    border: 3px dotted black;
+    border: 3px solid pink;
 }
 
 body{
@@ -19,4 +19,7 @@ body{
 .jumbotron{
     margin-top: 50px;
     margin-bottom:15px;
+    background:black;
+    color: pink;
+    margin-left: 80px;
 }
