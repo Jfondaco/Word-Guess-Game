@@ -53,7 +53,6 @@ document.onkeyup = function(event) {
         if (guessesMade.indexOf(userGuess) === -1)
             {
             guessesMade.push(userGuess);
-            console.log(guessesMade);
             }
          
         //(below doesn't work) if guess is already in the guessMade arrayy add a guess left back
@@ -67,10 +66,11 @@ document.onkeyup = function(event) {
             if (answer[j] === userGuess) {
             answerArray[j] = userGuess;
             guessesLeft++;
-            // remainingLetters--;
             }    
-            if (answerArray[j] === "_") {
-                moreToGo = true; }
+
+            if (answerArray.includes("_")){
+                moreToGo = true;
+            }
             else {
                 moreToGo = false;
             }
@@ -95,15 +95,16 @@ winsText.textContent = "Wins: " + score;
 lettersText.textContent = "Letters Guessed: " + guessesMade + " ";
 progress.textContent = answerArray;    
 
-console.log(answerArray[j])
-console.log(moreToGo);
-
 //need a statement for a new game if guessesLeft = 0 OR if answer is complete
 // if ((remainingLetters === 0) 
 // wins ++ and a reload page function
 
 // (guessesLeft === 0)){}
 // you lose alert and a reload page function
+
+console.log(moreToGo);
+console.log(answerArray)
+console.log(answer)
 
 }
 
