@@ -1,7 +1,22 @@
-.col-md-3{
+.col-md-4{
+    border: 3px dotted black;
+    background:black;
+    color: white;
+
+}
+
+.col-md-4-offset-4{
     border: 3px dotted black;
 }
 
-.col-md-3-offset-3{
-    border: 3px dotted black;
+body{
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+
+.jumbotron{
+    margin-top: 50px;
+    margin-bottom:15px;
 }

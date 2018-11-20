@@ -1,9 +1,9 @@
 // Current issues:
 // -Lets someone guess the same letter twice
 // -if answer has 2 of the same letter it adds 2 guesses remaining back (should be 1)
-// -if answer has 2 of the same letter remainingLetter only decreases by 1 (should be 2)
+// -if answer has 2 of the same letter remaining guesses only decreases by 1 (should be 2)
 // -guesses remaining will go to a negative (need a break function or some exit for loop)
-// -need to restart when word is finished or guesses remaining = 0
+// -need to restart when word is finished or guesses remaining = 0 and increment wins
 
 
 // create variables here
@@ -27,17 +27,18 @@ var guessesMade = [];
 var answer = possibleAnswers[Math.floor(Math.random() * possibleAnswers.length)];
 
 //var for remaining letters
+// var remainingLetters = answer.length;
 
 // creates _ for the answer
 var answerArray = [];
 for (var i=0; i < answer.length; i++){
     answerArray[i] = "_";
 }
-
-var remainingLetters = answer.length
     
 //Function for guessing
 document.onkeyup = function(event) {
+
+    var moreToGo = true
 
     // registers key press.
     var userGuess = event.key;
@@ -48,7 +49,6 @@ document.onkeyup = function(event) {
     
 
     //need a loop where it will check the guessesMade array to see if guess was already made
-   // if (array.indexOf(item) === -1) array.push(item);
         //if guess wasn't made yet push it to array
         if (guessesMade.indexOf(userGuess) === -1)
             {
@@ -56,14 +56,10 @@ document.onkeyup = function(event) {
             console.log(guessesMade);
             }
          
-        //if guess is already in the guessMade arrayy add a guess left back
+        //(below doesn't work) if guess is already in the guessMade arrayy add a guess left back
         if (guessesMade.indexOf(userGuess) === 1){
             guessesLeft++;
         }
-    
-    
-       
-   //while loop for remaining letters > 0
     
     //loops checking if guess matches a letter from the answer array   
         for (var j = 0; j < answer.length; j++) {
@@ -71,9 +67,25 @@ document.onkeyup = function(event) {
             if (answer[j] === userGuess) {
             answerArray[j] = userGuess;
             guessesLeft++;
-            remainingLetters--;
-            }             
+            // remainingLetters--;
+            }    
+            if (answerArray[j] === "_") {
+                moreToGo = true; }
+            else {
+                moreToGo = false;
+            }
+            
         }  
+
+        if (moreToGo === false){
+            score++
+            // need some restart function here?
+        }
+
+        if (guessesLeft === 0){
+            alert("YOU LOSE");
+            // also need restart function here
+        }
     
     
     
@@ -83,12 +95,15 @@ winsText.textContent = "Wins: " + score;
 lettersText.textContent = "Letters Guessed: " + guessesMade + " ";
 progress.textContent = answerArray;    
 
+console.log(answerArray[j])
+console.log(moreToGo);
+
 //need a statement for a new game if guessesLeft = 0 OR if answer is complete
+// if ((remainingLetters === 0) 
+// wins ++ and a reload page function
 
-console.log(remainingLetters)
-if ((remainingLetters === 0) || (guessesLeft === 0)){
-
-}
+// (guessesLeft === 0)){}
+// you lose alert and a reload page function
 
 }
 
