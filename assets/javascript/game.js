@@ -3,7 +3,7 @@ function setState(state) {
 }
 
 function getState() {
-  if (!"word_guess_game" in localStorage) {
+  if (!("word_guess_game" in localStorage)) {
     setState({'score': 0});
   }
   return JSON.parse(localStorage["word_guess_game"]);
